@@ -9,12 +9,10 @@
 #include "esp_event.h"
 #include "esp_log.h"
 #include "esp_system.h"
+#include "util.h"
 
 #define SSID_SIZE          33
 #define PWD_SIZE           65
-
-#define WIFI_SSID_INITIAL  "YUNFAN6190"
-#define WIFI_PWD_INITIAL   "1415926zyfA"
 
 void nvs_init(void);
 void nvs_read_wifi_info(char* ssid, char* pwd);
