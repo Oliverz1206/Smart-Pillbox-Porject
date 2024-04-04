@@ -1,0 +1,18 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.adapterTargetName": "esp32s3",
+  "idf.openOcdConfigs": [
+    "board/esp32s3-bridge.cfg"
+  ],
+  "idf.portWin": "COM5",
+  "idf.flashType": "UART",
+  "files.associations": {
+    "dht22.h": "c",
+    "nvs.h": "c",
+    "esp_log.h": "c",
+    "event_groups.h": "c",
+    "stdio.h": "c",
+    "freertos.h": "c",
+    "string.h": "c"
+  }
+}
