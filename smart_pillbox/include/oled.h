@@ -30,15 +30,47 @@
 #define LCD_H_RES                   128
 #define LCD_V_RES                   64
 
+/**
+ * @brief Create LCD screen
+ */
 void lcd_init(void);
-lv_obj_t * create_label(void);
 
+/**
+ * @brief turn off the display
+ */
 void turn_off_disp(void);
+/**
+ * @brief turn on the display
+ */
 void turn_on_disp(void);
 
+/**
+ * @brief Clear the whole display
+ */
 void display_clear(void);
+
+/**
+ * @brief Display the text on screen
+ * @param[in] label label handler
+ * @param[in] text  context for display
+ */
 void display_text(lv_obj_t * label, const char * text);
+
+/**
+ * @brief Special interface 1 for the screen
+ */
 void display_interface1(lv_obj_t * label, int wifi_status, int mqtt_status, float temp, float humid, bool warning);
+
+/**
+ * @brief Special interface 2 for the screen
+ */
 void display_interface2(lv_obj_t * label, uint32_t * pill_num);
 
-#endif
+/**
+ * @brief Create a label for the screen
+ * @return
+ *   - lv_obj_t: a label handler
+ */
+lv_obj_t * create_label(void);
+
+#endif /* OLED_H */

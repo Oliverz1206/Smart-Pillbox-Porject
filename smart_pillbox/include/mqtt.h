@@ -26,8 +26,28 @@
 
 enum MQTT_STATUS {MQTT_CONNECTED, MQTT_CONNECTING, MQTT_DISCONNECTED};
 
+/**
+ * @brief Start MQTT Service
+ */
 void mqtt_start(void);
+
+/**
+ * @brief Get MQTT message
+ * @param[out] str message buffer
+ * @param[out] len length of the message
+ * @return
+ *   - true: currently have MQTT message 
+ *   - false: currently not received MQTT message
+ */
 bool get_message(char * str, size_t * len);
+
+/**
+ * @brief Get MQTT service status
+ * @return
+ *   - MQTT_Status: MQTT_CONNECTED    mqtt service started 
+ *                  MQTT_CONNECTING   mqtt service is subscribing
+ *                  MQTT_DISCONNECTED mqtt service do not working
+ */
 int get_mqtt_status(void);
 
-#endif
+#endif /* MQTT_H */

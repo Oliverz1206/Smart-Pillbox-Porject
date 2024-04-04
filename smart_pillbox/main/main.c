@@ -172,8 +172,7 @@ void app_main(void) {
 
             case SMARTCONFIG:
                 if (smartconfig_required) {
-                    wifi_status = SMARTCONFIG;
-                    display_interface1(label, wifi_status, mqtt_status, temperature, humidity, false);
+                    display_interface1(label, WIFI_SMARTCONFIG, mqtt_status, temperature, humidity, false);
                     smartconfig();
                     smartconfig_required = false;
                 }
