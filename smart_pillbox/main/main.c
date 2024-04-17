@@ -181,23 +181,31 @@ void app_main(void) {
             case NOTIFICATION:
                 if (message_status) {
                     ESP_LOGI(TAG, "Alarm Length: %u, Alarm Contents: %s", length, message);
+                    memset(led_status, 0, sizeof(led_status));
+                    memset(pill_num, 0, sizeof(pill_num));
                     cJSON * alarm = cJSON_ParseWithLength(message, length);
                     if (alarm != NULL) {
-                        for (int i = 0; i < 5; i++) {
+                        int idx = 0;
+                        for (idx = 0; idx < 5; idx++) {
                             char str[12] = {0};
-                            sprintf(str, "Slot%d", i + 1);
+                            sprintf(str, "Slot%d", idx + 1);
                             cJSON * slot = cJSON_GetObjectItemCaseSensitive(alarm, str);
-                            if (!cJSON_IsBool(slot)) continue;
+                            if (!cJSON_IsBool(slot)) break;
 
-                            sprintf(str, "PillNum%d", i + 1);
+                            sprintf(str, "PillNum%d", idx + 1);
                             cJSON * num = cJSON_GetObjectItemCaseSensitive(alarm, str);
-                            if (!cJSON_IsNumber(num)) continue;
+                            if (!cJSON_IsNumber(num)) break;
 
-                            led_status[i] = slot->valueint;
-                            pill_num[i] = num->valueint;
+                            led_status[idx] = slot->valueint;
+                            pill_num[idx] = num->valueint;
                         }
-                        set_LED(led_status);
-                        start_buzz_alarm();
+                        if (idx == 5) { 
+                            set_LED(led_status);
+                            start_buzz_alarm();
+                        }
+                        else {
+                            system_status = IDLE;
+                        }
                     }
                     else ESP_LOGE(TAG, "Unknown Json.");
                 }

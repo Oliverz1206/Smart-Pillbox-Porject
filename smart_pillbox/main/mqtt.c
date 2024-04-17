@@ -56,10 +56,6 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
         message[event->data_len] = '\0';
         length = event->data_len;
         received = true;
-
-        // Print out the info
-        //printf("TOPIC=%.*s\r\n", event->topic_len, event->topic);
-        //printf("DATA=%.*s\r\n", event->data_len, event->data);
         break;
     case MQTT_EVENT_ERROR:
         ESP_LOGI(TAG, "MQTT_EVENT_ERROR");
