@@ -35,12 +35,16 @@ void clear_LED(uint32_t * status) {
     }
 }
 
-void start_buzz_alarm(void) {
+void alarm_init(void) {
     esp_timer_create_args_t timer_args = {
         .callback = &buzzer_task,
         .name = "buzzer_timer",
     };
     esp_timer_create(&timer_args, &timer);
+    esp_timer_stop(timer);
+}
+
+void start_buzz_alarm(void) {
     esp_timer_start_periodic(timer, 25e3);
 }
 

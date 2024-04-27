@@ -80,6 +80,7 @@ void app_main(void) {
     /* Hardware part startup. Reboot if failed to start. */
     // OLED
     lcd_init();
+    alarm_init();
     label = create_label();
     display_text(label, "System Startup");
 
@@ -186,6 +187,7 @@ void app_main(void) {
                     cJSON * alarm = cJSON_ParseWithLength(message, length);
                     if (alarm != NULL) {
                         int idx = 0;
+                        int false_cnt = 0;
                         for (idx = 0; idx < 5; idx++) {
                             char str[12] = {0};
                             sprintf(str, "Slot%d", idx + 1);
@@ -198,8 +200,10 @@ void app_main(void) {
 
                             led_status[idx] = slot->valueint;
                             pill_num[idx] = num->valueint;
+
+                            if (slot->valueint == 0) false_cnt++;
                         }
-                        if (idx == 5) { 
+                        if (idx == 5 && false_cnt != 5) { 
                             set_LED(led_status);
                             start_buzz_alarm();
                         }

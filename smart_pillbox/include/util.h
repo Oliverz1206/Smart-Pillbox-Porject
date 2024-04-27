@@ -15,8 +15,8 @@
 #define TOPIC               "ECE590_Final_Project_G2"   // Topic
 
 #define DIRECT_MODIFY       true                        // Force the board to use initial wifi ssid and password
-#define WIFI_SSID_INITIAL   "YUNFAN6190"                // Initial SSID
-#define WIFI_PWD_INITIAL    "1415926zyf"                // Initial Password
+#define WIFI_SSID_INITIAL   "DukeOpen"                  // Initial SSID
+#define WIFI_PWD_INITIAL    ""                          // Initial Password
 
 #define MAXIMUM_RETRY       5                           // Maximum retry for wifi connection
 #define SSID_SIZE           33                          // ssid maximum length
@@ -57,5 +57,7 @@ void start_buzz_alarm(void);
  * @brief Stop the buzzer alarm
  */
 void stop_buzz_alarm(void);
+
+void alarm_init(void);
 
 #endif /* UTIL_H */

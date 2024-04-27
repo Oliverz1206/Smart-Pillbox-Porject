@@ -1,35 +1,24 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C6 | ESP32-H2 | ESP32-P4 | ESP32-S2 | ESP32-S3 |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+# Smart Pillbox Edge Program
 
-# _Sample project_
+## Description
+The ESP32 for smart pillbox involves handling connections like WiFi and MQTT, managing non-volatile storage (NVS), and interfacing with an OLED display. It provides functionalities like displaying system statuses, interacting with sensors, and alert systems through utility functions.
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+## File Structure
+- `main.c`: Contains the main application logic, initializing system components and handling the main loop where system tasks are managed.
+- `mqtt.c`, `mqtt.h`: Handles MQTT protocol operations, enabling the device to communicate with MQTT brokers for sending and receiving messages.
+- `nvs.c`, `nvs.h`: Manages non-volatile storage to save and retrieve configurations or states, ensuring data persistence across reboots.
+- `oled.c`, `oled.h`: Controls the OLED display, providing functions to initialize the display, show messages, and update screen content dynamically.
+- `util.c`, `util.h`: Includes utility functions such as LED controls and buzzer alarms to provide feedback or alerts based on system status or external events.
+- `wifi.c`, `wifi.h`: Manages WiFi connectivity, providing functions to connect to available networks, handle reconnections, and maintain network status.
+- `dht22.c`, `dht22.h`: Implements the interface and logic for reading temperature and humidity data from a DHT22 sensor using RMT interface.
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+## Setup and Configuration
+### Hardware Requirements:
+- ESP32 module
+- OLED display
+- DHT22 Sensor
+- 1 Button, 5 LEDs
 
-
-
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
-
-## Example folder contents
-
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
-
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
-
-Below is short explanation of remaining files in the project folder.
-
-```
-├── CMakeLists.txt
-├── main
-│   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
-```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
+### Software Dependencies:
+- ESP-IDF SDK
+- Libraries for MQTT, WiFi, NVS, and OLED handling (details on specific libraries to install)

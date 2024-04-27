@@ -145,7 +145,7 @@ void display_interface2(lv_obj_t * label, uint32_t * pill_num) {
     lv_obj_align(label, LV_ALIGN_TOP_LEFT, 0, -5);
     lv_obj_set_style_text_font(label, &lv_font_montserrat_12, 0);
     sprintf(str, "================\n||  %02ld  ||  %02ld  ||  %02ld  ||\n-----------------------\n||     %02ld     ||     %02ld      ||\n================", 
-            pill_num[0], pill_num[1], pill_num[2], pill_num[3], pill_num[4]);
+            pill_num[4], pill_num[1], pill_num[3], pill_num[0], pill_num[2]);
     lv_label_set_text(label, str);
     lvgl_port_unlock();
 }

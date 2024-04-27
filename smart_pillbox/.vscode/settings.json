@@ -13,6 +13,8 @@
     "event_groups.h": "c",
     "stdio.h": "c",
     "freertos.h": "c",
-    "string.h": "c"
+    "string.h": "c",
+    "task.h": "c",
+    "esp_event.h": "c"
   }
 }
